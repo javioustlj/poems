@@ -1,0 +1,175 @@
+% !Mode:: "TeX:UTF-8"
+% poems.tex
+% 夏田墨诗词集
+
+\documentclass[twoside]{book}
+
+%========基本必备的宏包========%
+
+\usepackage{calc} % 用来在源文件中做简单数学计算的宏包
+\usepackage{zhnumber} % 用来将阿拉伯数字转换为中文数字
+
+\usepackage{geometry} % 用来设置页面的宏包
+\usepackage{tocloft} % 用来设置目录
+\usepackage{titlesec} % 用于设置标题
+\usepackage{fancyhdr} % 用来设置页眉页脚
+\usepackage{perpage} % 用于每页计数的宏包
+\usepackage{multicol} % 用来多栏排版的宏包
+\usepackage{verse} % 用于排版诗歌
+\usepackage{indentfirst} % 控制首行缩进的宏包
+\usepackage{hyperref} % 用于创建超链接
+\usepackage{framed} % 带边框的文本或段落
+\usepackage{xcolor} % 用来设置颜色的宏包
+
+\usepackage{xeCJK} % 用于中文字体的宏包
+\usepackage{float} % 用来设置浮动字体的宏包
+\usepackage{fontspec} % 用于处理字体
+\usepackage{xpinyin} % 用来给汉字注音
+\usepackage{moresize} % 提供更多字体大小控制的宏包
+
+%=========页面设置=========%
+\geometry{
+    a4paper, %a4paper size 297:210 mm
+    bindingoffset=10mm, %装订线
+    top=35mm,
+    bottom=30mm,
+    inner=10mm, % 左边距, left 是在单面文档中使用， inner是双面文档使用
+    outer=10mm, % 右边距，right 是在单面文档中使用，outer是在双面文档使用
+}
+
+%================字体================%
+%中文環境
+\xeCJKsetup{PunctStyle=plain}
+\setCJKmainfont{仿宋}
+
+%================目录===============%
+%%===============中文=========%
+\renewcommand\contentsname{目~录}
+\renewcommand\listfigurename{插图目录}
+\renewcommand\listtablename{表格目录}
+\renewcommand\bibname{参~考~文~献}
+\renewcommand\indexname{索~引}
+\renewcommand\figurename{图}
+\renewcommand\tablename{表}
+\renewcommand\partname{部分}
+\renewcommand\appendixname{附录}
+\renewcommand{\today}{\number\year 年\number\month 月\number\day 日}
+
+%=======页眉页脚格式=========%
+\pagestyle{fancy}
+\renewcommand{\sectionmark}[1]
+{\markright{第\zhnumber{\arabic{section}}节~~#1}{}}
+
+\fancypagestyle{plain}{%
+    \fancyhf{}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}
+    \fancyhf[HR]{\ttfamily \footnotesize \rightmark }
+    \fancyhf[FR]{\thepage}}
+\pagestyle{plain}
+
+%=========章節標題設計=========%
+%修改part
+\titleformat{\part}{\huge\sffamily\centering}{}{0em}{}
+%修改chapter
+\titleformat{\chapter}{\LARGE\sffamily\centering}{}{0em}{}
+%修改section
+\titleformat{\section}{\Large\sffamily\centering}{}{0em}{}
+%修改subsection
+\titleformat{\subsection}{\large\sffamily\centering}{}{0em}{}
+%修改subsubsection
+\titleformat{\subsubsection}{\normalsize\sffamily\centering}{}{0em}{}
+
+
+%========脚注=========%
+\MakePerPage{footnote}
+\setlength{\skip\footins}{20pt plus 10pt}
+
+%=======拼音========%
+
+\xpinyinsetup{ratio={.7},hsep={.5em plus .1em}, vsep={1.1em}, multiple={\color{red}}}
+
+\newenvironment{poem}[3]%
+{
+    \poemtitle{#1}
+    {#2}
+    \begin{pinyinscope}
+    \large
+    \settowidth{\versewidth}{#3}
+    \begin{verse}[\versewidth]
+}
+{\end{verse}\end{pinyinscope}}
+
+\hypersetup{
+    pdfcreator={夏田墨}
+}
+
+\setcounter{tocdepth}{2}
+
+
+\title{诗词集}
+\author{夏田墨}
+\date{\today}
+
+\begin{document}
+
+\frontmatter
+\maketitle  % 输出书籍名称
+\tableofcontents
+
+\chapter{前言}
+一直有一个想法，可以搜集整理自己喜欢的诗词歌曲。
+
+一个能被诗词打动的人，注定不是一个冷漠的人。
+
+该文稿采用\LaTeX 排版，并为诗词部分添加了注音，方便阅读。
+
+
+\mainmatter
+
+\chapter{五言诗}
+
+
+\begin{poem}{春晓}{唐~孟浩然}{春眠不觉晓}
+春眠不觉晓 \\
+处处闻啼鸟 \\
+夜来风雨声 \\
+花落知多少 \\
+\end{poem}
+
+\begin{poem}{悯农}{唐~李绅}{锄禾日当午}
+锄禾日当午 \\
+汗滴禾下土 \\
+谁知盘中餐 \\
+粒粒皆辛苦 \\
+\end{poem}
+
+
+\chapter{现代诗}
+
+\begin{poem}{三弦}{沈尹默}{旁边有一段低低土墙}
+中午时候 \\
+火一样的太阳 \\
+没法去遮拦 \\
+让他直晒着长街 \\
+静悄悄少人行路 \\
+只有悠悠风来 \\
+吹动路旁杨树 \\!
+
+谁家破大门里 \\
+半兜子绿茸茸细草 \\
+都浮若闪闪的金光 \\
+旁边有一段低低土墙 \\
+挡住了一个弹三弦的人 \\
+却不能隔断那三弦鼓荡的声浪 \\!
+
+门外坐着一个穿破衣裳的老年人 \\
+双手抱着头 \\
+他不声不响 \\!
+\end{poem}
+
+\backmatter
+\chapter{参考资料}
+
+
+\end{document}
