@@ -4,6 +4,8 @@
 
 \documentclass[twoside]{book}
 
+
+
 %========基本必备的宏包========%
 
 \usepackage{calc} % 用来在源文件中做简单数学计算的宏包
@@ -22,7 +24,7 @@
 \usepackage{framed} % 带边框的文本或段落
 \usepackage{xcolor} % 用来设置颜色的宏包
 
-\usepackage{xeCJK} % 用于中文字体的宏包
+% \usepackage{xeCJK} % 用于中文字体的宏包
 \usepackage{float} % 用来设置浮动字体的宏包
 \usepackage{fontspec} % 用于处理字体
 \usepackage{xpinyin} % 用来给汉字注音
@@ -39,6 +41,9 @@
     outer=10mm, % 右边距，right 是在单面文档中使用，outer是在双面文档使用
 }
 
+%=========中文设置=========%
+\usepackage[UTF8, heading=true, scheme=chinese, fontset=none]{ctex}
+\ctexset{fontset=fandol, space=true}
 %================字体================%
 %中文環境
 \xeCJKsetup{PunctStyle=plain}
@@ -201,6 +206,8 @@
 双手抱着头 \\
 他不声不响 \\!
 \end{poem}
+
+\include{gequ}
 
 \backmatter
 \chapter{参考资料}
